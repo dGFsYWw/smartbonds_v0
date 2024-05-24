@@ -14,7 +14,9 @@ document.getElementById('tokenForm').addEventListener('submit', async (e) => {
         const accounts = await web3.eth.getAccounts();
         const account = accounts[0];
 
+        /* Add the ABI of the ERC20Token contract here */
         const contractABI = [/* Add the ABI of the ERC20Token contract here */];
+        /* Add the compiled bytecode of the ERC20Token contract here */
         const contractBytecode = '/* Add the compiled bytecode of the ERC20Token contract here */';
 
         const contract = new web3.eth.Contract(contractABI);
