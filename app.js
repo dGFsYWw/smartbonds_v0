@@ -376,8 +376,10 @@ async function createToken() {
     })
     .on('receipt', function(receipt) {
         console.log('Contract Address:', receipt.contractAddress);
-        alert('Token successfully created at address: ' + receipt.contractAddress);
-    })
+        //alert('Token successfully created at address: ' + receipt.contractAddress);
+		document.getElementById('address').innerText = receipt.contractAddress;
+        document.getElementById('contractAddress').style.display = 'block';
+	})
     .on('error', function(error) {
         console.error(error);
         alert('An error occurred during the contract deployment.');

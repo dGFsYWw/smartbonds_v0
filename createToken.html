@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smart Bonds v0.1</title>
+    <!--Interact w/ Ethereum using Web3.js (popular JavaScript lib for interacting with Ethereum-->
+    <script src="https://cdn.jsdelivr.net/npm/web3@latest/dist/web3.min.js"></script>
+    <!--css reference-->
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+        <table style="border-collapse: collapse; border: none;">
+            <tr>
+                <td><h1><a href="index.html">Smart Bonds v0</a></h1></td>
+            </tr>
+            <tr>
+                <td><h2>Create Your ERC20 Token</h2></td>
+            </tr>
+        </table>
+        
+    <form id="tokenForm">
+        <label for="tokenName">Token Name:</label>
+        <input type="text" id="tokenName" name="tokenName" required><br><br>
+
+        <label for="tokenSymbol">Token Symbol:</label>
+        <input type="text" id="tokenSymbol" name="tokenSymbol" required><br><br>
+
+        <label for="initialSupply">Initial Supply:</label>
+        <input type="number" id="initialSupply" name="initialSupply" required><br><br>
+        <!--Create Token button-->        
+        <button type="button" onclick="createToken()">Create Token</button>
+    </form>
+    <div id="contractAddress" style="display:none;">
+        <h2>Token Contract Address:</h2>
+        <p id="address"></p>
+    </div>
+    <!--JavaScript reference-->
+    <script src="app.js"></script>
+    <!--Status message-->
+    <p id="status"></p>
+
+</body>
+</html>
