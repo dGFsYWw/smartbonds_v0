@@ -354,7 +354,6 @@ async function createToken() {
     const tokenSymbol = document.getElementById('tokenSymbol').value;
     const initialSupply = document.getElementById('initialSupply').value;
 
-    console.log("Creating token with:", tokenName, tokenSymbol, initialSupply);
     const walletAddress = await connectWallet();
     if (!walletAddress) return; // Stop if there is no wallet connected
 
@@ -364,7 +363,6 @@ async function createToken() {
     });
 
     const gasPrice = await web3.eth.getGasPrice();
-    console.log("Deploying contract with gas price:", gasPrice);
 
     tokenContract.deploy({
         arguments: [tokenName, tokenSymbol, initialSupply]
@@ -376,10 +374,9 @@ async function createToken() {
     })
     .on('receipt', function(receipt) {
         console.log('Contract Address:', receipt.contractAddress);
-        //alert('Token successfully created at address: ' + receipt.contractAddress);
-		document.getElementById('address').innerText = receipt.contractAddress;
+        document.getElementById('address').innerText = receipt.contractAddress;
         document.getElementById('contractAddress').style.display = 'block';
-	})
+    })
     .on('error', function(error) {
         console.error(error);
         alert('An error occurred during the contract deployment.');
