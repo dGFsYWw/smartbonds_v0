@@ -349,20 +349,25 @@ async function connectWallet() {
 }
 
 // Function to create an ERC20 token
-async function createToken(tokenName, tokenSymbol, initialSupply) {
+async function createToken() {
+    const tokenName = document.getElementById('tokenName').value;
+    const tokenSymbol = document.getElementById('tokenSymbol').value;
+    const initialSupply = document.getElementById('initialSupply').value;
+
+    console.log("Creating token with:", tokenName, tokenSymbol, initialSupply);
     const walletAddress = await connectWallet();
     if (!walletAddress) return; // Stop if there is no wallet connected
 
-    //Make sure to replace ERC20_ABI and ERC20_BYTECODE with your actual contract ABI and bytecode
     const web3 = new Web3(window.ethereum);
     const tokenContract = new web3.eth.Contract(ERC20_ABI, null, {
         data: ERC20_BYTECODE
     });
 
     const gasPrice = await web3.eth.getGasPrice();
+    console.log("Deploying contract with gas price:", gasPrice);
 
     tokenContract.deploy({
-        arguments: [initialSupply, tokenName, tokenSymbol]
+        arguments: [tokenName, tokenSymbol, initialSupply]
     })
     .send({
         from: walletAddress,
