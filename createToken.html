@@ -21,7 +21,7 @@
             </tr>
         </table>
         
-    <form id="tokenForm">
+    <div><form id="tokenForm">
         <label for="tokenName">Token Name:</label>
         <input type="text" id="tokenName" name="tokenName" required><br><br>
 
@@ -32,7 +32,8 @@
         <input type="number" id="initialSupply" name="initialSupply" required><br><br>
         <!--Create Token button-->        
         <button type="button" onclick="createToken()">Create Token</button>
-    </form>
+    </form></div>
+    
     <div id="contractAddress" style="display:none;">
         <h2>Token Contract Address:</h2>
         <p id="address"></p>
